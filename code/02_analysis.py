@@ -1,14 +1,19 @@
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.stattools import adfuller
 
-# 配置中文字体
+plt.switch_backend("Agg")
 plt.rcParams["font.sans-serif"] = ["SimHei", "WenQuanYi Micro Hei"]
 plt.rcParams["axes.unicode_minus"] = False
 
+data_path = "C:/Users/21182/Desktop/exchange-rate-forecast/data/processed_rmb_rate.csv"
+result_root = "C:/Users/21182/Desktop/exchange-rate-forecast/result" 
+
 # 读取数据、清洗脏数据
-df = pd.read_csv("C:/Users/21182/Desktop/exchange-rate-forecast/data/processed_rmb_rate.csv", index_col="日期", parse_dates=["日期"])
+df = pd.read_csv(data_path, index_col="日期", parse_dates=["日期"])
 df = df.replace("-", np.nan)
 df = df.apply(pd.to_numeric, errors="coerce")  # 强制转数值，非法字符变NaN
 
@@ -19,77 +24,79 @@ print(f"本次待分析币种共 {len(currency_list)} 个：")
 print(currency_list)
 print("-" * 80)
 
-# ADF检验函数：返回拼接好的结果字符串
-def adf_test(ts, currency_name):
-    result = adfuller(ts)
-    adf_stat = result[0]
-    p_val = result[1]
-    crit = result[4]
-
-    res_text = f"===== {currency_name} ADF平稳性检验结果 =====\n"
-    res_text += f"ADF统计量: {adf_stat:.4f}\n"
-    res_text += f"P值: {p_val:.4f}\n"
-    res_text += "临界值：\n"
-    for k, v in crit.items():
-        res_text += f"  {k}: {v:.4f}\n"
-    if p_val < 0.05:
-        res_text += "✅ 结论：序列为平稳序列\n"
-    else:
-        res_text += "❌ 结论：序列为非平稳序列\n"
-    print(res_text)
-    return res_text
 
 # 遍历币种
 for currency in currency_list:
-    try:
-        print(f"\n========== 开始处理：{currency} ==========")
-        series = df[currency].copy()
-        valid_series = series.dropna()
-        valid_count = len(valid_series)
-        print(f"有效数据条数：{valid_count}")
-
-        if valid_count < MIN_VALID_LEN:
-            print(f"⚠️ {currency} 有效数据不足 {MIN_VALID_LEN} 条，跳过分析")
-            plt.close()
-            continue
-
-        # 原始序列检验
-        res1 = adf_test(valid_series, currency)
-        # 一阶差分
-        diff_series = valid_series.diff().dropna()
-        print(f"\n===== {currency} 一阶差分后检验 =====")
-        res2 = adf_test(diff_series, f"{currency}_一阶差分序列")
-
-        # 合并所有结果
-        total_text = f"币种名称：{currency}\n有效数据条数：{valid_count}\n\n" + res1 + "\n" + res2
-        # 保存文本到result
-        txt_path = f"C:/Users/21182/Desktop/exchange-rate-forecast/result/{currency}_分析结果.txt"
-        with open(txt_path, "w", encoding="utf-8") as f:
-            f.write(total_text)
-
-        # 绘制并保存图片
-        plt.figure(figsize=(14, 8))
-        plt.subplot(2, 1, 1)
-        valid_series.plot(label=f"原始{currency}", color="#1f77b4", linewidth=1)
-        plt.title(f"{currency}兑人民币汇率（有效数据区间）")
-        plt.legend()
-        plt.grid(alpha=0.3)
-
-        plt.subplot(2, 1, 2)
-        diff_series.plot(label=f"一阶差分序列", color="#ff7f0e")
-        plt.title(f"{currency}汇率 一阶差分序列")
-        plt.legend()
-        plt.grid(alpha=0.3)
-
-        plt.tight_layout()
-        plt.savefig(f"C:/Users/21182/Desktop/exchange-rate-forecast/result/{currency}_station_test.png", dpi=300, bbox_inches="tight")
-        plt.close()
-        print(f"✅ {currency} 图表、文本结果已保存")
-
-    except Exception as e:
-        print(f"❌ {currency} 分析出错：{str(e)}")
-        plt.close()
+    print(f"\n========== 正在分析：{currency} ==========")
+    series = df[currency].dropna()
+    if len(series) < 365:
+        print(f"⚠️ {currency} 数据量不足，跳过")
         continue
 
-print("\n" + "="*80)
-print("✅ 全部币种分析完成，结果已存入result文件夹")
+    # 1. 创建当前币种独立文件夹（和ARIMA目录统一）
+    curr_dir = os.path.join(result_root, currency)
+    if not os.path.exists(curr_dir):
+        os.makedirs(curr_dir)
+
+    # 2. 基础统计描述，保存为txt
+    desc_txt_path = os.path.join(curr_dir, f"{currency}_统计描述.txt")
+    desc = series.describe()
+    with open(desc_txt_path, "w", encoding="utf-8") as f:
+        f.write(f"币种：{currency}\n")
+        f.write(f"数据起止时间：{series.index[0]} ~ {series.index[-1]}\n")
+        f.write(f"有效数据量：{len(series)}\n\n")
+        f.write(str(desc))
+
+    # 3. 绘制原始时序图并保存
+    plt.figure(figsize=(14, 6))
+    plt.plot(series.index, series.values)
+    plt.title(f"{currency} 汇率原始时序图")
+    plt.xlabel("时间")
+    plt.ylabel("汇率")
+    plt.grid(alpha=0.3)
+    img1 = os.path.join(curr_dir, f"{currency}_时序图.png")
+    plt.tight_layout()
+    plt.savefig(img1, dpi=300, bbox_inches="tight")
+    plt.close()
+
+    # 4. 绘制一阶差分图
+    diff_series = series.diff().dropna()
+    plt.figure(figsize=(14, 6))
+    plt.plot(diff_series.index, diff_series.values)
+    plt.title(f"{currency} 汇率一阶差分序列图")
+    plt.xlabel("时间")
+    plt.ylabel("差分后汇率")
+    plt.grid(alpha=0.3)
+    img2 = os.path.join(curr_dir, f"{currency}_一阶差分图.png")
+    plt.tight_layout()
+    plt.savefig(img2, dpi=300, bbox_inches="tight")
+    plt.close()
+
+    # 5. ACF、PACF 图（定阶使用）
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 8))
+    plot_acf(diff_series, lags=30, ax=ax1)
+    plot_pacf(diff_series, lags=30, ax=ax2, method="ywm")
+    plt.suptitle(f"{currency} 差分序列 ACF/PACF 图")
+    img3 = os.path.join(curr_dir, f"{currency}_ACF_PACF图.png")
+    plt.tight_layout()
+    plt.savefig(img3, dpi=300, bbox_inches="tight")
+    plt.close()
+
+    # 6. ADF平稳性检验结果保存
+    adf_result = adfuller(diff_series)
+    adf_txt_path = os.path.join(curr_dir, f"{currency}_ADF平稳性检验.txt")
+    with open(adf_txt_path, "w", encoding="utf-8") as f:
+        f.write(f"币种：{currency} 一阶差分序列 ADF检验\n")
+        f.write(f"ADF统计量: {adf_result[0]:.4f}\n")
+        f.write(f"P值: {adf_result[1]:.4f}\n")
+        f.write(f"临界值:\n")
+        for k, v in adf_result[4].items():
+            f.write(f"  {k}: {v:.4f}\n")
+        if adf_result[1] < 0.05:
+            f.write("\n结论：一阶差分后序列平稳\n")
+        else:
+            f.write("\n结论：一阶差分后序列仍非平稳\n")
+
+    print(f"✅ {currency} 分析结果已保存至：{curr_dir}")
+
+print("\n==================== 全部币种数据分析完成 ====================")
