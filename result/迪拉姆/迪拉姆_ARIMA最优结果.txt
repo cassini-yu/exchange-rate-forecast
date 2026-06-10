@@ -2,9 +2,9 @@
 最优模型阶数：ARIMA(1,1,2)
 
 ===== 预测评价指标 =====
-MAE: nan
-MSE: nan
-RMSE: nan
+MAE: 2.0894
+MSE: 4.7156
+RMSE: 2.1715
 
 ===== 最优模型详细报告 =====
                                SARIMAX Results                                
@@ -12,7 +12,7 @@ RMSE: nan
 Dep. Variable:                    迪拉姆   No. Observations:                 1576
 Model:                 ARIMA(1, 1, 2)   Log Likelihood                 774.060
 Date:                Wed, 10 Jun 2026   AIC                          -1540.121
-Time:                        16:57:54   BIC                          -1518.673
+Time:                        18:24:15   BIC                          -1518.673
 Sample:                             0   HQIC                         -1532.150
                                - 1576                                         
 Covariance Type:                  opg                                         

@@ -79,54 +79,49 @@ def train_select_best_arima(series, train_ratio=0.7):
     return best_model, best_order, candidate_records
 
 def main():
-    # 读取数据 + 补全时间频率，消除索引警告
     df = pd.read_csv(DATA_PATH, index_col="日期", parse_dates=["日期"])
     df = df.replace("-", np.nan)
     df = df.apply(pd.to_numeric, errors="coerce")
-    df = df.asfreq("D")  # 补全日频率
+    df = df.asfreq("D")
     currency_list = df.columns.tolist()
 
     for curr in currency_list:
         print(f"\n========== 正在优化币种：{curr} ==========")
         ts = df[curr]
-        if len(ts.dropna()) < 300:
+        ts_clean = ts.dropna()
+        if len(ts_clean) < 300:
             print(f"数据量不足，跳过 {curr}")
             continue
 
-        # 创建币种独立文件夹
         curr_dir = os.path.join(RESULT_ROOT, curr)
         os.makedirs(curr_dir, exist_ok=True)
 
-        # 自动寻优
-        best_res, best_ord, all_cand = train_select_best_arima(ts)
+        # 1. 寻优
+        best_res, best_ord, all_cand = train_select_best_arima(ts_clean)
         if best_res is None:
-            # 遍历无结果，启用兜底模型 ARIMA(1,1,1)
-            print(f"{curr} 遍历无匹配阶数，启用兜底模型 ARIMA(1,1,1)")
-            fallback_order = (1, 1, 1)
-            ts_clean = ts.dropna()
-            fallback_model = ARIMA(ts_clean, order=fallback_order).fit()
-            best_res = fallback_model
-            best_order = fallback_order
-            split = int(len(ts_clean) * 0.7)
-            train = ts_clean.iloc[:split]
-            test = ts_clean.iloc[split:]
-            continue
+            print(f"{curr} 未找到合适ARIMA阶数，使用ARIMA(1,1,1)兜底")
+            best_ord = (1, 1, 1)
+            best_res = ARIMA(ts_clean, order=best_ord).fit()
 
         p_opt, d_opt, q_opt = best_ord
         print(f"{curr} 最优阶数: ARIMA({p_opt},{d_opt},{q_opt})")
 
-        # 划分训练/测试集
-        split = int(len(ts.dropna()) * 0.7)
-        train = ts.dropna().iloc[:split]
-        test = ts.dropna().iloc[split:]
-        pred = best_res.get_prediction(start=split, end=len(ts.dropna())-1).predicted_mean
+        # 2. 计算预测和指标（关键修复：对齐索引）
+        split = int(len(ts_clean) * 0.7)
+        train = ts_clean.iloc[:split]
+        test = ts_clean.iloc[split:]
 
-        # 计算评价指标
+        # 使用 get_forecast 而非 get_prediction，避免索引问题
+        pred_res = best_res.get_forecast(steps=len(test))
+        pred = pred_res.predicted_mean
+        # 确保 pred 和 test 是对齐的 Series
+        pred = pd.Series(pred.values, index=test.index)
+
         mae = np.mean(np.abs(pred - test))
         mse = np.mean((pred - test) ** 2)
         rmse = np.sqrt(mse)
 
-        # 1. 保存最优模型信息、指标、所有候选阶数结果
+        # 3. 写入结果文件（确保指标是数字）
         res_txt = os.path.join(curr_dir, f"{curr}_ARIMA最优结果.txt")
         with open(res_txt, "w", encoding="utf-8") as f:
             f.write(f"币种：{curr}\n")
@@ -141,7 +136,7 @@ def main():
             for item in all_cand:
                 f.write(f"order:{item['order']}, AIC:{item['aic']:.2f}, BIC:{item['bic']:.2f}, RMSE:{item['rmse']:.2f}\n")
 
-        # 2. 绘制预测对比图
+        # 4. 绘图（修复索引问题）
         plt.figure(figsize=(15, 6))
         plt.plot(train.index, train.values, label="训练集", color="#1f77b4")
         plt.plot(test.index, test.values, label="真实值", color="#2ca02c")

@@ -2,9 +2,9 @@
 最优模型阶数：ARIMA(3,1,4)
 
 ===== 预测评价指标 =====
-MAE: nan
-MSE: nan
-RMSE: nan
+MAE: 33.1400
+MSE: 1782.6138
+RMSE: 42.2210
 
 ===== 最优模型详细报告 =====
                                SARIMAX Results                                
@@ -12,7 +12,7 @@ RMSE: nan
 Dep. Variable:                     英镑   No. Observations:                 3304
 Model:                 ARIMA(3, 1, 4)   Log Likelihood              -10683.006
 Date:                Wed, 10 Jun 2026   AIC                          21382.011
-Time:                        16:50:17   BIC                          21430.832
+Time:                        18:14:31   BIC                          21430.832
 Sample:                             0   HQIC                         21399.486
                                - 3304                                         
 Covariance Type:                  opg                                         

@@ -8,7 +8,7 @@ Optimized:                       True   AIC                           2742.087
 Trend:                       Additive   BIC                           2764.192
 Seasonal:                        None   AICC                          2742.132
 Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
-Box-Cox:                        False   Time:                         17:19:05
+Box-Cox:                        False   Time:                         18:01:22
 Box-Cox Coeff.:                  None                                         
 ==============================================================================
                        coeff                 code              optimized      
