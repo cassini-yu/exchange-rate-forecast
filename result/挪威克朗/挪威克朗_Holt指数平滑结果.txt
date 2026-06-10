@@ -1,0 +1,25 @@
+币种：挪威克朗
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                   挪威克朗   No. Observations:                 1761
+Model:                           Holt   SSE                           1597.125
+Optimized:                       True   AIC                           -164.009
+Trend:                       Additive   BIC                           -142.114
+Seasonal:                        None   AICC                          -163.961
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:14
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0101757                 beta                 True
+initial_level              122.75000                  l.0                False
+initial_trend             -0.4700000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 5.2096
+MSE: 43.2368
+RMSE: 6.5755

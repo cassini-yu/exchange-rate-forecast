@@ -1,0 +1,25 @@
+币种：里亚尔
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                    里亚尔   No. Observations:                 1801
+Model:                           Holt   SSE                             49.072
+Optimized:                       True   AIC                          -6480.647
+Trend:                       Additive   BIC                          -6458.663
+Seasonal:                        None   AICC                         -6480.601
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:08
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            0.9282359                alpha                 True
+smoothing_trend            0.1878651                 beta                 True
+initial_level              55.140000                  l.0                False
+initial_trend              1.1430000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 1.5468
+MSE: 3.5733
+RMSE: 1.8903

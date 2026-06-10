@@ -1,0 +1,25 @@
+币种：泰铢
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                     泰铢   No. Observations:                 1535
+Model:                           Holt   SSE                           4745.162
+Optimized:                       True   AIC                           1740.394
+Trend:                       Additive   BIC                           1761.739
+Seasonal:                        None   AICC                          1740.448
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:18
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0412562                 beta                 True
+initial_level              499.57000                  l.0                False
+initial_trend              2.3400000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 46.3668
+MSE: 2513.1799
+RMSE: 50.1316

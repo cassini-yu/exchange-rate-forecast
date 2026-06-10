@@ -1,0 +1,25 @@
+币种：瑞典克朗
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                   瑞典克朗   No. Observations:                 1761
+Model:                           Holt   SSE                           1054.168
+Optimized:                       True   AIC                           -895.623
+Trend:                       Additive   BIC                           -873.728
+Seasonal:                        None   AICC                          -895.575
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:13
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0055504                 beta                 True
+initial_level              133.06000                  l.0                False
+initial_trend             -0.1900000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 5.4025
+MSE: 49.8915
+RMSE: 7.0634

@@ -1,0 +1,25 @@
+币种：兰特
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                     兰特   No. Observations:                 1856
+Model:                           Holt   SSE                           8097.301
+Optimized:                       True   AIC                           2742.087
+Trend:                       Additive   BIC                           2764.192
+Seasonal:                        None   AICC                          2742.132
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:05
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0355980                 beta                 True
+initial_level              229.28000                  l.0                False
+initial_trend             -3.4900000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 20.9971
+MSE: 580.8076
+RMSE: 24.0999

@@ -1,0 +1,25 @@
+币种：瑞士法郎
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                   瑞士法郎   No. Observations:                 1975
+Model:                           Holt   SSE                          17966.428
+Optimized:                       True   AIC                           4368.675
+Trend:                       Additive   BIC                           4391.028
+Seasonal:                        None   AICC                          4368.717
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:00
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0131828                 beta                 True
+initial_level              634.26000                  l.0                False
+initial_trend             -1.7100000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 46.7921
+MSE: 2726.9399
+RMSE: 52.2201

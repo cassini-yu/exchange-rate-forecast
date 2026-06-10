@@ -1,0 +1,25 @@
+币种：丹麦克朗
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                   丹麦克朗   No. Observations:                 1761
+Model:                           Holt   SSE                            255.583
+Optimized:                       True   AIC                          -3390.891
+Trend:                       Additive   BIC                          -3368.996
+Seasonal:                        None   AICC                         -3390.843
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:12
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0422516                 beta                 True
+initial_level              102.01000                  l.0                False
+initial_trend             -0.6800000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 3.8505
+MSE: 20.5651
+RMSE: 4.5349

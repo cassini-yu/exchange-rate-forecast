@@ -1,0 +1,25 @@
+币种：兹罗提
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                    兹罗提   No. Observations:                 1761
+Model:                           Holt   SSE                            211.270
+Optimized:                       True   AIC                          -3726.203
+Trend:                       Additive   BIC                          -3704.308
+Seasonal:                        None   AICC                         -3726.155
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:11
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0246093                 beta                 True
+initial_level              61.029000                  l.0                False
+initial_trend             -0.3780000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 4.2171
+MSE: 21.3313
+RMSE: 4.6186

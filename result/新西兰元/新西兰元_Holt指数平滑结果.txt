@@ -1,0 +1,25 @@
+币种：新西兰元
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                   新西兰元   No. Observations:                 2296
+Model:                           Holt   SSE                          17301.178
+Optimized:                       True   AIC                           4645.016
+Trend:                       Additive   BIC                           4667.971
+Seasonal:                        None   AICC                          4645.052
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:18:58
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0296855                 beta                 True
+initial_level              528.99000                  l.0                False
+initial_trend             -4.1900000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 52.6512
+MSE: 3539.9209
+RMSE: 59.4972

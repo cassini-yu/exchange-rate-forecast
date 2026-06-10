@@ -1,0 +1,25 @@
+币种：英镑
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                     英镑   No. Observations:                 3776
+Model:                           Holt   SSE                         137410.554
+Optimized:                       True   AIC                          13580.107
+Trend:                       Additive   BIC                          13605.052
+Seasonal:                        None   AICC                         13580.129
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:18:56
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0209966                 beta                 True
+initial_level              1488.3300                  l.0                False
+initial_trend              7.6400000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 59.2635
+MSE: 4605.1546
+RMSE: 67.8613

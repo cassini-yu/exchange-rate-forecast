@@ -1,0 +1,25 @@
+币种：迪拉姆
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                    迪拉姆   No. Observations:                 1801
+Model:                           Holt   SSE                             37.760
+Optimized:                       True   AIC                          -6952.566
+Trend:                       Additive   BIC                          -6930.582
+Seasonal:                        None   AICC                         -6952.519
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:07
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            0.9814207                alpha                 True
+smoothing_trend            0.0242621                 beta                 True
+initial_level              55.193000                  l.0                False
+initial_trend             -0.0780000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 0.4625
+MSE: 0.3373
+RMSE: 0.5807

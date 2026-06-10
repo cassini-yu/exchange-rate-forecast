@@ -1,0 +1,25 @@
+币种：福林
+===== 霍尔特线性指数平滑 模型摘要 =====
+                              Holt Model Results                              
+==============================================================================
+Dep. Variable:                     福林   No. Observations:                 1761
+Model:                           Holt   SSE                        2008370.988
+Optimized:                       True   AIC                          12404.027
+Trend:                       Additive   BIC                          12425.921
+Seasonal:                        None   AICC                         12404.074
+Seasonal Periods:                None   Date:                 Wed, 10 Jun 2026
+Box-Cox:                        False   Time:                         17:19:10
+Box-Cox Coeff.:                  None                                         
+==============================================================================
+                       coeff                 code              optimized      
+------------------------------------------------------------------------------
+smoothing_level            1.0000000                alpha                 True
+smoothing_trend            0.0203667                 beta                 True
+initial_level              4317.4500                  l.0                False
+initial_trend             -32.670000                  b.0                False
+------------------------------------------------------------------------------
+
+===== 模型评估指标 =====
+MAE: 460.2929
+MSE: 384771.0157
+RMSE: 620.2991
