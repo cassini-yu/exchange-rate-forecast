@@ -1,0 +1,74 @@
+币种：挪威克朗
+最优模型阶数：ARIMA(2,1,3)
+
+===== 预测评价指标 =====
+MAE: nan
+MSE: nan
+RMSE: nan
+
+===== 最优模型详细报告 =====
+                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                   挪威克朗   No. Observations:                 1541
+Model:                 ARIMA(2, 1, 3)   Log Likelihood               -2075.039
+Date:                Wed, 10 Jun 2026   AIC                           4162.077
+Time:                        17:01:57   BIC                           4194.114
+Sample:                             0   HQIC                          4173.997
+                               - 1541                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1          0.5142      0.101      5.108      0.000       0.317       0.711
+ar.L2          0.4440      0.098      4.543      0.000       0.252       0.636
+ma.L1         -0.4723      0.099     -4.790      0.000      -0.666      -0.279
+ma.L2         -0.3856      0.100     -3.862      0.000      -0.581      -0.190
+ma.L3         -0.1240      0.015     -8.038      0.000      -0.154      -0.094
+sigma2         0.8666      0.014     61.410      0.000       0.839       0.894
+===================================================================================
+Ljung-Box (L1) (Q):                   0.01   Jarque-Bera (JB):             12008.23
+Prob(Q):                              0.92   Prob(JB):                         0.00
+Heteroskedasticity (H):               3.25   Skew:                             1.24
+Prob(H) (two-sided):                  0.00   Kurtosis:                        16.45
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+
+===== 所有候选阶数对比 =====
+order:(0, 1, 0), AIC:4179.17, BIC:4184.51, RMSE:nan
+order:(0, 1, 1), AIC:4178.63, BIC:4189.30, RMSE:nan
+order:(0, 1, 2), AIC:4169.19, BIC:4185.21, RMSE:nan
+order:(0, 1, 3), AIC:4166.99, BIC:4188.35, RMSE:nan
+order:(0, 1, 4), AIC:4167.06, BIC:4193.76, RMSE:nan
+order:(0, 1, 5), AIC:4168.37, BIC:4200.41, RMSE:nan
+order:(1, 1, 0), AIC:4178.19, BIC:4188.87, RMSE:nan
+order:(1, 1, 1), AIC:4177.17, BIC:4193.19, RMSE:nan
+order:(1, 1, 2), AIC:4166.10, BIC:4187.46, RMSE:nan
+order:(1, 1, 3), AIC:4167.53, BIC:4194.23, RMSE:nan
+order:(1, 1, 4), AIC:4168.90, BIC:4200.94, RMSE:nan
+order:(1, 1, 5), AIC:4165.61, BIC:4202.98, RMSE:nan
+order:(2, 1, 0), AIC:4169.76, BIC:4185.78, RMSE:nan
+order:(2, 1, 1), AIC:4167.20, BIC:4188.56, RMSE:nan
+order:(2, 1, 2), AIC:4166.55, BIC:4193.25, RMSE:nan
+order:(2, 1, 3), AIC:4162.08, BIC:4194.11, RMSE:nan
+order:(2, 1, 4), AIC:4163.98, BIC:4201.36, RMSE:nan
+order:(2, 1, 5), AIC:4164.28, BIC:4207.00, RMSE:nan
+order:(3, 1, 0), AIC:4166.94, BIC:4188.30, RMSE:nan
+order:(3, 1, 1), AIC:4168.32, BIC:4195.02, RMSE:nan
+order:(3, 1, 2), AIC:4162.72, BIC:4194.75, RMSE:nan
+order:(3, 1, 3), AIC:4163.57, BIC:4200.94, RMSE:nan
+order:(3, 1, 4), AIC:4163.38, BIC:4206.10, RMSE:nan
+order:(3, 1, 5), AIC:4167.69, BIC:4215.74, RMSE:nan
+order:(4, 1, 0), AIC:4168.22, BIC:4194.92, RMSE:nan
+order:(4, 1, 1), AIC:4170.15, BIC:4202.19, RMSE:nan
+order:(4, 1, 2), AIC:4169.86, BIC:4207.23, RMSE:nan
+order:(4, 1, 3), AIC:4163.07, BIC:4205.78, RMSE:nan
+order:(4, 1, 4), AIC:4168.89, BIC:4216.95, RMSE:nan
+order:(4, 1, 5), AIC:4166.22, BIC:4219.62, RMSE:nan
+order:(5, 1, 0), AIC:4169.68, BIC:4201.71, RMSE:nan
+order:(5, 1, 1), AIC:4167.20, BIC:4204.58, RMSE:nan
+order:(5, 1, 2), AIC:4164.84, BIC:4207.55, RMSE:nan
+order:(5, 1, 3), AIC:4168.21, BIC:4216.26, RMSE:nan
+order:(5, 1, 4), AIC:4170.20, BIC:4223.60, RMSE:nan
+order:(5, 1, 5), AIC:4167.38, BIC:4226.12, RMSE:nan

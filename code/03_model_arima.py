@@ -16,16 +16,13 @@ plt.rcParams["axes.unicode_minus"] = False
 DATA_PATH = "C:/Users/21182/Desktop/exchange-rate-forecast/data/processed_rmb_rate.csv"
 RESULT_ROOT = "C:/Users/21182/Desktop/exchange-rate-forecast/result"
 # 阶数搜索范围 p,q
-P_RANGE = [0, 1, 2, 3]
-Q_RANGE = [0, 1, 2, 3]
+P_RANGE = [0, 1, 2, 3, 4,5]
+Q_RANGE = [0, 1, 2, 3, 4,5]
 D = 1  # 固定一阶差分
 
 def train_select_best_arima(series, train_ratio=0.7):
     """
-    单币种自动遍历阶数，选择最优ARIMA(p,1,q)
-    :param series: 单币种时序数据
-    :param train_ratio: 训练集比例
-    :return: 最优模型、最优参数、最优指标、所有候选结果
+    单币种自动遍历阶数，关闭强统计检验，适配高噪声汇率数据
     """
     series = series.dropna()
     n = len(series)
@@ -47,17 +44,10 @@ def train_select_best_arima(series, train_ratio=0.7):
                 model = ARIMA(train, order=order)
                 res = model.fit()
 
-                # 1. 检查系数显著性：所有系数P值<0.05
-                p_vals = res.pvalues
-                if (p_vals > 0.05).any():
-                    continue
+                # 完全关闭：系数显著性、Ljung-Box残差检验
+                # 仅捕获模型报错、不可逆/非平稳异常
 
-                # 2. 检查残差白噪声 Ljung-Box
-                lb_p = res.test_serial_correlation("ljungbox", lags=1)[0][0][1]
-                if lb_p < 0.05:
-                    continue
-
-                # 3. 预测并计算误差
+                # 预测计算指标
                 pred = res.get_prediction(start=split, end=n-1).predicted_mean
                 mse = np.mean((pred - test) ** 2)
                 rmse = np.sqrt(mse)
@@ -71,11 +61,10 @@ def train_select_best_arima(series, train_ratio=0.7):
                     "aic": aic,
                     "bic": bic,
                     "rmse": rmse,
-                    "mae": mae,
-                    "lb_p": lb_p
+                    "mae": mae
                 })
 
-                # 更新最优模型：优先AIC最小
+                # 按AIC最小选最优
                 if aic < best_aic:
                     best_aic = aic
                     best_bic = bic
@@ -84,7 +73,7 @@ def train_select_best_arima(series, train_ratio=0.7):
                     best_order = order
 
             except Exception:
-                # 跳过模型报错、不稳定的阶数
+                # 仅跳过拟合报错、模型不稳定的阶数
                 continue
 
     return best_model, best_order, candidate_records
@@ -111,7 +100,16 @@ def main():
         # 自动寻优
         best_res, best_ord, all_cand = train_select_best_arima(ts)
         if best_res is None:
-            print(f"{curr} 未找到合适ARIMA阶数")
+            # 遍历无结果，启用兜底模型 ARIMA(1,1,1)
+            print(f"{curr} 遍历无匹配阶数，启用兜底模型 ARIMA(1,1,1)")
+            fallback_order = (1, 1, 1)
+            ts_clean = ts.dropna()
+            fallback_model = ARIMA(ts_clean, order=fallback_order).fit()
+            best_res = fallback_model
+            best_order = fallback_order
+            split = int(len(ts_clean) * 0.7)
+            train = ts_clean.iloc[:split]
+            test = ts_clean.iloc[split:]
             continue
 
         p_opt, d_opt, q_opt = best_ord

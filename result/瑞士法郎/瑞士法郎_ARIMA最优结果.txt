@@ -1,0 +1,72 @@
+币种：瑞士法郎
+最优模型阶数：ARIMA(1,1,2)
+
+===== 预测评价指标 =====
+MAE: nan
+MSE: nan
+RMSE: nan
+
+===== 最优模型详细报告 =====
+                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                   瑞士法郎   No. Observations:                 1728
+Model:                 ARIMA(1, 1, 2)   Log Likelihood               -4305.893
+Date:                Wed, 10 Jun 2026   AIC                           8619.785
+Time:                        16:53:13   BIC                           8641.602
+Sample:                             0   HQIC                          8627.856
+                               - 1728                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1          0.8427      0.100      8.448      0.000       0.647       1.038
+ma.L1         -0.8060      0.104     -7.745      0.000      -1.010      -0.602
+ma.L2         -0.0635      0.019     -3.405      0.001      -0.100      -0.027
+sigma2         8.5734      0.160     53.484      0.000       8.259       8.888
+===================================================================================
+Ljung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):              1987.53
+Prob(Q):                              0.98   Prob(JB):                         0.00
+Heteroskedasticity (H):               0.95   Skew:                             0.20
+Prob(H) (two-sided):                  0.53   Kurtosis:                         8.24
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+
+===== 所有候选阶数对比 =====
+order:(0, 1, 0), AIC:8622.42, BIC:8627.87, RMSE:nan
+order:(0, 1, 1), AIC:8621.70, BIC:8632.61, RMSE:nan
+order:(0, 1, 2), AIC:8622.30, BIC:8638.66, RMSE:nan
+order:(0, 1, 3), AIC:8624.29, BIC:8646.11, RMSE:nan
+order:(0, 1, 4), AIC:8623.94, BIC:8651.21, RMSE:nan
+order:(0, 1, 5), AIC:8625.88, BIC:8658.61, RMSE:nan
+order:(1, 1, 0), AIC:8621.85, BIC:8632.76, RMSE:nan
+order:(1, 1, 1), AIC:8620.96, BIC:8637.32, RMSE:nan
+order:(1, 1, 2), AIC:8619.79, BIC:8641.60, RMSE:nan
+order:(1, 1, 3), AIC:8621.79, BIC:8649.06, RMSE:nan
+order:(1, 1, 4), AIC:8621.97, BIC:8654.70, RMSE:nan
+order:(1, 1, 5), AIC:8623.96, BIC:8662.14, RMSE:nan
+order:(2, 1, 0), AIC:8622.41, BIC:8638.78, RMSE:nan
+order:(2, 1, 1), AIC:8622.82, BIC:8644.64, RMSE:nan
+order:(2, 1, 2), AIC:8621.39, BIC:8648.67, RMSE:nan
+order:(2, 1, 3), AIC:8621.88, BIC:8654.60, RMSE:nan
+order:(2, 1, 4), AIC:8623.16, BIC:8661.34, RMSE:nan
+order:(2, 1, 5), AIC:8624.88, BIC:8668.52, RMSE:nan
+order:(3, 1, 0), AIC:8624.41, BIC:8646.23, RMSE:nan
+order:(3, 1, 1), AIC:8626.41, BIC:8653.68, RMSE:nan
+order:(3, 1, 2), AIC:8621.76, BIC:8654.49, RMSE:nan
+order:(3, 1, 3), AIC:8620.50, BIC:8658.67, RMSE:nan
+order:(3, 1, 4), AIC:8622.44, BIC:8666.07, RMSE:nan
+order:(3, 1, 5), AIC:8624.40, BIC:8673.49, RMSE:nan
+order:(4, 1, 0), AIC:8624.35, BIC:8651.62, RMSE:nan
+order:(4, 1, 1), AIC:8621.90, BIC:8654.62, RMSE:nan
+order:(4, 1, 2), AIC:8623.04, BIC:8661.22, RMSE:nan
+order:(4, 1, 3), AIC:8622.68, BIC:8666.31, RMSE:nan
+order:(4, 1, 4), AIC:8624.92, BIC:8674.01, RMSE:nan
+order:(4, 1, 5), AIC:8626.44, BIC:8680.98, RMSE:nan
+order:(5, 1, 0), AIC:8626.33, BIC:8659.05, RMSE:nan
+order:(5, 1, 1), AIC:8628.34, BIC:8666.51, RMSE:nan
+order:(5, 1, 2), AIC:8624.70, BIC:8668.33, RMSE:nan
+order:(5, 1, 3), AIC:8624.41, BIC:8673.49, RMSE:nan
+order:(5, 1, 4), AIC:8631.80, BIC:8686.34, RMSE:nan
+order:(5, 1, 5), AIC:8628.34, BIC:8688.33, RMSE:nan

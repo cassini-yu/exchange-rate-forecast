@@ -1,0 +1,79 @@
+币种：里拉
+最优模型阶数：ARIMA(5,1,5)
+
+===== 预测评价指标 =====
+MAE: nan
+MSE: nan
+RMSE: nan
+
+===== 最优模型详细报告 =====
+                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                     里拉   No. Observations:                 1541
+Model:                 ARIMA(5, 1, 5)   Log Likelihood               -3294.474
+Date:                Wed, 10 Jun 2026   AIC                           6610.949
+Time:                        17:02:30   BIC                           6669.683
+Sample:                             0   HQIC                          6632.801
+                               - 1541                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1         -0.4899      0.118     -4.137      0.000      -0.722      -0.258
+ar.L2         -0.0615      0.071     -0.864      0.388      -0.201       0.078
+ar.L3          0.4723      0.064      7.333      0.000       0.346       0.599
+ar.L4          0.2551      0.111      2.308      0.021       0.038       0.472
+ar.L5         -0.3477      0.065     -5.387      0.000      -0.474      -0.221
+ma.L1          0.6419      0.118      5.444      0.000       0.411       0.873
+ma.L2          0.1318      0.078      1.691      0.091      -0.021       0.285
+ma.L3         -0.4401      0.070     -6.265      0.000      -0.578      -0.302
+ma.L4         -0.4420      0.111     -3.966      0.000      -0.660      -0.224
+ma.L5          0.2291      0.083      2.775      0.006       0.067       0.391
+sigma2         4.2350      0.033    127.787      0.000       4.170       4.300
+===================================================================================
+Ljung-Box (L1) (Q):                   0.01   Jarque-Bera (JB):           3089632.21
+Prob(Q):                              0.94   Prob(JB):                         0.00
+Heteroskedasticity (H):               7.83   Skew:                            -7.33
+Prob(H) (two-sided):                  0.00   Kurtosis:                       221.94
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+
+===== 所有候选阶数对比 =====
+order:(0, 1, 0), AIC:6685.15, BIC:6690.49, RMSE:nan
+order:(0, 1, 1), AIC:6655.20, BIC:6665.87, RMSE:nan
+order:(0, 1, 2), AIC:6655.50, BIC:6671.52, RMSE:nan
+order:(0, 1, 3), AIC:6652.82, BIC:6674.18, RMSE:nan
+order:(0, 1, 4), AIC:6645.32, BIC:6672.01, RMSE:nan
+order:(0, 1, 5), AIC:6646.15, BIC:6678.19, RMSE:nan
+order:(1, 1, 0), AIC:6657.30, BIC:6667.98, RMSE:nan
+order:(1, 1, 1), AIC:6647.70, BIC:6663.72, RMSE:nan
+order:(1, 1, 2), AIC:6644.59, BIC:6665.95, RMSE:nan
+order:(1, 1, 3), AIC:6656.58, BIC:6683.28, RMSE:nan
+order:(1, 1, 4), AIC:6641.45, BIC:6673.49, RMSE:nan
+order:(1, 1, 5), AIC:6643.41, BIC:6680.79, RMSE:nan
+order:(2, 1, 0), AIC:6657.33, BIC:6673.35, RMSE:nan
+order:(2, 1, 1), AIC:6644.20, BIC:6665.56, RMSE:nan
+order:(2, 1, 2), AIC:6651.51, BIC:6678.21, RMSE:nan
+order:(2, 1, 3), AIC:6644.62, BIC:6676.66, RMSE:nan
+order:(2, 1, 4), AIC:6638.09, BIC:6675.47, RMSE:nan
+order:(2, 1, 5), AIC:6640.23, BIC:6682.95, RMSE:nan
+order:(3, 1, 0), AIC:6656.85, BIC:6678.21, RMSE:nan
+order:(3, 1, 1), AIC:6645.50, BIC:6672.20, RMSE:nan
+order:(3, 1, 2), AIC:6644.35, BIC:6676.39, RMSE:nan
+order:(3, 1, 3), AIC:6629.82, BIC:6667.20, RMSE:nan
+order:(3, 1, 4), AIC:6631.03, BIC:6673.75, RMSE:nan
+order:(3, 1, 5), AIC:6632.41, BIC:6680.47, RMSE:nan
+order:(4, 1, 0), AIC:6643.96, BIC:6670.65, RMSE:nan
+order:(4, 1, 1), AIC:6638.74, BIC:6670.77, RMSE:nan
+order:(4, 1, 2), AIC:6640.73, BIC:6678.11, RMSE:nan
+order:(4, 1, 3), AIC:6631.10, BIC:6673.82, RMSE:nan
+order:(4, 1, 4), AIC:6616.70, BIC:6664.76, RMSE:nan
+order:(4, 1, 5), AIC:6624.54, BIC:6677.93, RMSE:nan
+order:(5, 1, 0), AIC:6643.54, BIC:6675.57, RMSE:nan
+order:(5, 1, 1), AIC:6640.74, BIC:6678.11, RMSE:nan
+order:(5, 1, 2), AIC:6636.36, BIC:6679.08, RMSE:nan
+order:(5, 1, 3), AIC:6633.62, BIC:6681.68, RMSE:nan
+order:(5, 1, 4), AIC:6643.36, BIC:6696.75, RMSE:nan
+order:(5, 1, 5), AIC:6610.95, BIC:6669.68, RMSE:nan

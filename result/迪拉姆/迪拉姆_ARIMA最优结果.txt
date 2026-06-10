@@ -1,0 +1,72 @@
+币种：迪拉姆
+最优模型阶数：ARIMA(1,1,2)
+
+===== 预测评价指标 =====
+MAE: nan
+MSE: nan
+RMSE: nan
+
+===== 最优模型详细报告 =====
+                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                    迪拉姆   No. Observations:                 1576
+Model:                 ARIMA(1, 1, 2)   Log Likelihood                 774.060
+Date:                Wed, 10 Jun 2026   AIC                          -1540.121
+Time:                        16:57:54   BIC                          -1518.673
+Sample:                             0   HQIC                         -1532.150
+                               - 1576                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1          0.9642      0.022     43.070      0.000       0.920       1.008
+ma.L1         -0.9599      0.028    -34.501      0.000      -1.014      -0.905
+ma.L2          0.0185      0.019      0.962      0.336      -0.019       0.056
+sigma2         0.0219      0.001     40.734      0.000       0.021       0.023
+===================================================================================
+Ljung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):               338.50
+Prob(Q):                              0.99   Prob(JB):                         0.00
+Heteroskedasticity (H):               1.47   Skew:                             0.17
+Prob(H) (two-sided):                  0.00   Kurtosis:                         5.25
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+
+===== 所有候选阶数对比 =====
+order:(0, 1, 0), AIC:-1534.72, BIC:-1529.36, RMSE:nan
+order:(0, 1, 1), AIC:-1532.94, BIC:-1522.22, RMSE:nan
+order:(0, 1, 2), AIC:-1531.08, BIC:-1514.99, RMSE:nan
+order:(0, 1, 3), AIC:-1531.42, BIC:-1509.98, RMSE:nan
+order:(0, 1, 4), AIC:-1531.91, BIC:-1505.10, RMSE:nan
+order:(0, 1, 5), AIC:-1532.05, BIC:-1499.88, RMSE:nan
+order:(1, 1, 0), AIC:-1532.95, BIC:-1522.22, RMSE:nan
+order:(1, 1, 1), AIC:-1530.94, BIC:-1514.86, RMSE:nan
+order:(1, 1, 2), AIC:-1540.12, BIC:-1518.67, RMSE:nan
+order:(1, 1, 3), AIC:-1538.75, BIC:-1511.94, RMSE:nan
+order:(1, 1, 4), AIC:-1536.97, BIC:-1504.80, RMSE:nan
+order:(1, 1, 5), AIC:-1535.35, BIC:-1497.81, RMSE:nan
+order:(2, 1, 0), AIC:-1531.12, BIC:-1515.03, RMSE:nan
+order:(2, 1, 1), AIC:-1529.11, BIC:-1507.66, RMSE:nan
+order:(2, 1, 2), AIC:-1538.16, BIC:-1511.35, RMSE:nan
+order:(2, 1, 3), AIC:-1537.46, BIC:-1505.29, RMSE:nan
+order:(2, 1, 4), AIC:-1535.55, BIC:-1498.02, RMSE:nan
+order:(2, 1, 5), AIC:-1533.50, BIC:-1490.60, RMSE:nan
+order:(3, 1, 0), AIC:-1531.65, BIC:-1510.20, RMSE:nan
+order:(3, 1, 1), AIC:-1538.80, BIC:-1511.99, RMSE:nan
+order:(3, 1, 2), AIC:-1537.45, BIC:-1505.28, RMSE:nan
+order:(3, 1, 3), AIC:-1534.64, BIC:-1497.10, RMSE:nan
+order:(3, 1, 4), AIC:-1533.70, BIC:-1490.81, RMSE:nan
+order:(3, 1, 5), AIC:-1531.22, BIC:-1482.96, RMSE:nan
+order:(4, 1, 0), AIC:-1532.28, BIC:-1505.47, RMSE:nan
+order:(4, 1, 1), AIC:-1536.94, BIC:-1504.77, RMSE:nan
+order:(4, 1, 2), AIC:-1535.04, BIC:-1497.51, RMSE:nan
+order:(4, 1, 3), AIC:-1533.09, BIC:-1490.19, RMSE:nan
+order:(4, 1, 4), AIC:-1530.80, BIC:-1482.54, RMSE:nan
+order:(4, 1, 5), AIC:-1531.67, BIC:-1478.05, RMSE:nan
+order:(5, 1, 0), AIC:-1532.61, BIC:-1500.44, RMSE:nan
+order:(5, 1, 1), AIC:-1530.61, BIC:-1493.07, RMSE:nan
+order:(5, 1, 2), AIC:-1533.38, BIC:-1490.48, RMSE:nan
+order:(5, 1, 3), AIC:-1533.19, BIC:-1484.93, RMSE:nan
+order:(5, 1, 4), AIC:-1531.67, BIC:-1478.05, RMSE:nan
+order:(5, 1, 5), AIC:-1531.15, BIC:-1472.17, RMSE:nan

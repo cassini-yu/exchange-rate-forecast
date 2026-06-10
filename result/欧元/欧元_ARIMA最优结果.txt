@@ -1,0 +1,69 @@
+币种：欧元
+最优模型阶数：ARIMA(0,1,0)
+
+===== 预测评价指标 =====
+MAE: nan
+MSE: nan
+RMSE: nan
+
+===== 最优模型详细报告 =====
+                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                     欧元   No. Observations:                 4062
+Model:                 ARIMA(0, 1, 0)   Log Likelihood              -12607.653
+Date:                Wed, 10 Jun 2026   AIC                          25217.307
+Time:                        16:45:49   BIC                          25223.616
+Sample:                             0   HQIC                         25219.541
+                               - 4062                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+sigma2        29.1155      0.293     99.515      0.000      28.542      29.689
+===================================================================================
+Ljung-Box (L1) (Q):                   0.15   Jarque-Bera (JB):             10258.34
+Prob(Q):                              0.70   Prob(JB):                         0.00
+Heteroskedasticity (H):               0.41   Skew:                            -0.33
+Prob(H) (two-sided):                  0.00   Kurtosis:                        10.76
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+
+===== 所有候选阶数对比 =====
+order:(0, 1, 0), AIC:25217.31, BIC:25223.62, RMSE:nan
+order:(0, 1, 1), AIC:25219.16, BIC:25231.78, RMSE:nan
+order:(0, 1, 2), AIC:25220.55, BIC:25239.48, RMSE:nan
+order:(0, 1, 3), AIC:25222.38, BIC:25247.61, RMSE:nan
+order:(0, 1, 4), AIC:25223.92, BIC:25255.47, RMSE:nan
+order:(0, 1, 5), AIC:25225.79, BIC:25263.64, RMSE:nan
+order:(1, 1, 0), AIC:25219.16, BIC:25231.78, RMSE:nan
+order:(1, 1, 1), AIC:25220.14, BIC:25239.07, RMSE:nan
+order:(1, 1, 2), AIC:25221.84, BIC:25247.08, RMSE:nan
+order:(1, 1, 3), AIC:25223.81, BIC:25255.35, RMSE:nan
+order:(1, 1, 4), AIC:25225.80, BIC:25263.65, RMSE:nan
+order:(1, 1, 5), AIC:25227.78, BIC:25271.95, RMSE:nan
+order:(2, 1, 0), AIC:25220.53, BIC:25239.46, RMSE:nan
+order:(2, 1, 1), AIC:25221.83, BIC:25247.07, RMSE:nan
+order:(2, 1, 2), AIC:25223.24, BIC:25254.79, RMSE:nan
+order:(2, 1, 3), AIC:25225.15, BIC:25263.00, RMSE:nan
+order:(2, 1, 4), AIC:25227.72, BIC:25271.88, RMSE:nan
+order:(2, 1, 5), AIC:25229.79, BIC:25280.27, RMSE:nan
+order:(3, 1, 0), AIC:25222.34, BIC:25247.58, RMSE:nan
+order:(3, 1, 1), AIC:25223.81, BIC:25255.36, RMSE:nan
+order:(3, 1, 2), AIC:25226.09, BIC:25263.95, RMSE:nan
+order:(3, 1, 3), AIC:25227.92, BIC:25272.09, RMSE:nan
+order:(3, 1, 4), AIC:25224.65, BIC:25275.12, RMSE:nan
+order:(3, 1, 5), AIC:25226.30, BIC:25283.08, RMSE:nan
+order:(4, 1, 0), AIC:25223.89, BIC:25255.43, RMSE:nan
+order:(4, 1, 1), AIC:25225.89, BIC:25263.74, RMSE:nan
+order:(4, 1, 2), AIC:25227.94, BIC:25272.11, RMSE:nan
+order:(4, 1, 3), AIC:25226.32, BIC:25276.79, RMSE:nan
+order:(4, 1, 4), AIC:25230.95, BIC:25287.73, RMSE:nan
+order:(4, 1, 5), AIC:25229.24, BIC:25292.33, RMSE:nan
+order:(5, 1, 0), AIC:25225.75, BIC:25263.61, RMSE:nan
+order:(5, 1, 1), AIC:25227.75, BIC:25271.92, RMSE:nan
+order:(5, 1, 2), AIC:25229.39, BIC:25279.86, RMSE:nan
+order:(5, 1, 3), AIC:25231.76, BIC:25288.54, RMSE:nan
+order:(5, 1, 4), AIC:25224.40, BIC:25287.49, RMSE:nan
+order:(5, 1, 5), AIC:25231.86, BIC:25301.27, RMSE:nan
